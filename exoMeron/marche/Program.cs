@@ -10,6 +10,8 @@ namespace marché
         {
             Console.WriteLine("Bienvenue au marché !");
 
+            Console.WriteLine("");
+
             List<Product> products = new List<Product>()
             {
             new Product() { Location = "1", Provider = "Bornand", Name = "Pommes", Quantity = 20, Unit = "kg", Price = 6.90m },
@@ -124,8 +126,10 @@ namespace marché
 
             if (maxProduct != null)
             {
-                Console.WriteLine($"Provider's Name is {maxProduct.Provider} and the quantity is {maxProduct.Quantity}");
+                Console.WriteLine($"C'est {maxProduct.Provider} qui a le plus de pastèques (stand {maxProduct.Location}, {maxProduct.Quantity} pièces)");
             }
+
+            Console.WriteLine("");
         }
     }
 

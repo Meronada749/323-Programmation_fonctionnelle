@@ -56,7 +56,7 @@
 //    Console.WriteLine(item);
 //}
 
-
+/*
 string[] words = { "bonjour", "hello", "monde", "vert", "rouge", "bleu", "jaune" };
 
 Func<string, bool> noX = w => !w.Contains('x');
@@ -121,4 +121,68 @@ switch (choice)
     default:
         Console.WriteLine("Invalid choice. Please enter 1, 2, or 3.");
         break;
+}*/
+
+
+
+static void Meron() {
+    Console.WriteLine("I am Action.");
 }
+static void Meron1(int a, bool b, string s)
+{
+    Console.WriteLine($"{a} + {b} + {s} ");
+}
+
+Action ilena = Meron;
+ilena();
+
+Action<int, bool, string> ilena1 = Meron1;
+ilena1(5, true, "meron");
+
+Action<int, bool, string> greet = (a, b, s) => Console.WriteLine($"{a} + {b} + {s} ");
+greet(5, false, "Meron");
+
+Action greet1 = () => Console.WriteLine("Hello");
+greet1();
+
+static int Meron2()
+{
+    return 1;
+}
+static int Meron3(int a, bool b, string s)
+{
+    return 10;
+}
+Meron3(5, true, "meron");
+
+Func<int> ilena2 = Meron2;
+Console.WriteLine(ilena2());
+
+Func<int, bool, string, int> ilena3 = (i, b, s) => i*895;
+Console.WriteLine(ilena3(5987,false,"meron"));
+/*
+static int Meron4(int a)
+{
+    return a * a;
+}
+
+
+
+Console.WriteLine(Meron4(10));*/
+
+Func<int> Meron12 = () => 1991;
+Console.WriteLine(Meron12());
+
+Func<int, int> square = a => a * a;
+
+Func<int, int> func = (a) => 10;
+Console.WriteLine(func(10));
+
+/*Func<int, int> square = x => x * x;
+Console.WriteLine(square(5));
+
+Func<int, int, int> add = (x, y) => x + y;
+Console.WriteLine(add(5, 10));
+
+Func<int, int, int, int> addThree = (x, y, z) => x + y + z;
+Console.WriteLine(addThree(5, 10, 15));*/

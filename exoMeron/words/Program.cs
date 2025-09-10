@@ -124,65 +124,53 @@ switch (choice)
 }*/
 
 
-
-static void Meron() {
+static void Greet()
+{
     Console.WriteLine("I am Action.");
 }
-static void Meron1(int a, bool b, string s)
+Greet();
+static void Greet1(int a, bool b, string s)
 {
-    Console.WriteLine($"{a} + {b} + {s} ");
+    Console.WriteLine($"{a} + {b} + {s}");
+}
+Greet1(1, true, "Meron");
+
+// Action without parameters
+Action greet = () => Console.WriteLine("Hello from Action!");
+greet(); // ✅ No arguments needed
+
+// Action with 3 parameters
+Action<int, bool, string> greet1 = (a, b, s) => Console.WriteLine($"{a} + {b} + {s}");
+greet1(1, true, "Essayas");
+
+static int f1()
+{
+    return 123;
 }
 
-Action ilena = Meron;
-ilena();
-
-Action<int, bool, string> ilena1 = Meron1;
-ilena1(5, true, "meron");
-
-Action<int, bool, string> greet = (a, b, s) => Console.WriteLine($"{a} + {b} + {s} ");
-greet(5, false, "Meron");
-
-Action greet1 = () => Console.WriteLine("Hello");
-greet1();
-
-static int Meron2()
-{
-    return 1;
-}
-static int Meron3(int a, bool b, string s)
-{
-    return 10;
-}
-Meron3(5, true, "meron");
-
-Func<int> ilena2 = Meron2;
-Console.WriteLine(ilena2());
-
-Func<int, bool, string, int> ilena3 = (i, b, s) => i*895;
-Console.WriteLine(ilena3(5987,false,"meron"));
-/*
-static int Meron4(int a)
+Console.WriteLine(f1());
+static int f2(int a)
 {
     return a * a;
 }
 
+Console.WriteLine(f2(10));
 
+static int f3(int i, bool b, string s)
+{
+    return i * 555;
+}
 
-Console.WriteLine(Meron4(10));*/
+Console.WriteLine(f3(3, true, "Tewelde"));
 
-Func<int> Meron12 = () => 1991;
-Console.WriteLine(Meron12());
+// Func with no parameters, returns int
+Func<int> f4 = () => 123;
+Console.WriteLine(f4()); // 123
 
-Func<int, int> square = a => a * a;
+// Func with 1 int parameter, returns int
+Func<int, int> f5 = a => a * a;
+Console.WriteLine(f5(10)); // 100
 
-Func<int, int> func = (a) => 10;
-Console.WriteLine(func(10));
-
-/*Func<int, int> square = x => x * x;
-Console.WriteLine(square(5));
-
-Func<int, int, int> add = (x, y) => x + y;
-Console.WriteLine(add(5, 10));
-
-Func<int, int, int, int> addThree = (x, y, z) => x + y + z;
-Console.WriteLine(addThree(5, 10, 15));*/
+// Func with 3 parameters (int, bool, string), returns int
+Func<int, bool, string, int> f6 = (i, b, s) => i * 555;
+Console.WriteLine(f6(3, true, "Tekleab")); // 2,775,000

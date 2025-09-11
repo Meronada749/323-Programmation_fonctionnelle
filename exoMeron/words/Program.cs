@@ -1,5 +1,5 @@
 ﻿// See https://aka.ms/new-console-template for more information
-//Console.WriteLine("Hello, World!");
+Console.WriteLine("Hello, World!");
 
 
 //string[] words = { "bonjour", "hello", "monde", "vert", "rouge", "bleu", "jaune" };
@@ -123,13 +123,13 @@ switch (choice)
         break;
 }*/
 
-
-static void Greet()
+/*
+void Greet()
 {
     Console.WriteLine("I am Action.");
 }
 Greet();
-static void Greet1(int a, bool b, string s)
+void Greet1(int a, bool b, string s)
 {
     Console.WriteLine($"{a} + {b} + {s}");
 }
@@ -143,20 +143,20 @@ greet(); // ✅ No arguments needed
 Action<int, bool, string> greet1 = (a, b, s) => Console.WriteLine($"{a} + {b} + {s}");
 greet1(1, true, "Essayas");
 
-static int f1()
+int f1()
 {
     return 123;
 }
 
 Console.WriteLine(f1());
-static int f2(int a)
+int f2(int a)
 {
     return a * a;
 }
 
 Console.WriteLine(f2(10));
 
-static int f3(int i, bool b, string s)
+int f3(int i, bool b, string s)
 {
     return i * 555;
 }
@@ -174,3 +174,31 @@ Console.WriteLine(f5(10)); // 100
 // Func with 3 parameters (int, bool, string), returns int
 Func<int, bool, string, int> f6 = (i, b, s) => i * 555;
 Console.WriteLine(f6(3, true, "Tekleab")); // 2,775,000
+
+
+int X2(int x)
+{
+    return x + x;
+}
+
+Func<int, int> x3 = X2;
+Console.WriteLine(x3(5));
+
+
+int Superior(Func<int, int, int> x)
+{
+    return x(1, 2);
+}
+
+var result = Superior(Sub);
+
+int Sub(int a, int b)
+{
+    return a - b;
+}
+
+Console.WriteLine(result);
+*/
+
+Func<int, Func<int, int>> myFunc = x => y => x + y;
+Console.WriteLine(myFunc(5)(3));

@@ -1,7 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
 Console.WriteLine("Hello, World!");
 
-
 //string[] words = { "bonjour", "hello", "monde", "vert", "rouge", "bleu", "jaune" };
 
 //var charValues = new Dictionary<char, double>();
@@ -56,11 +55,68 @@ Console.WriteLine("Hello, World!");
 //    Console.WriteLine(item);
 //}
 
-/*
+
 string[] words = { "bonjour", "hello", "monde", "vert", "rouge", "bleu", "jaune" };
 
 Func<string, bool> noX = w => !w.Contains('x');
 
+//Console.WriteLine(noX("Meronex")); //False
+
+//Console.WriteLine(words.All(noX)); //True
+
+Console.WriteLine(string.Join(',' , words.Where(noX))); //Print all that does not have x
+
+//Console.WriteLine("");
+
+//bool Nox(string w)
+//{
+//    return !w.Contains('x');
+//}
+
+//Console.WriteLine(Nox("Meronex")); //False
+//Console.WriteLine(words.All(Nox)); //True
+
+
+Console.WriteLine("");
+
+List<Person> people = new() {
+    new Person ( name: "John", age: 25 ),
+    new Person ( name: "Mary", age: 30 ),
+    new Person ( name: "Jane", age: 20 ),
+    new Person ( name: "Bob", age: 35 )
+};
+
+List<Person> adults = people.Where(p => p.Age > 18).ToList();
+
+//adults.ForEach(n => Console.WriteLine(n.Name + " " + n.Age));
+
+Console.WriteLine("");
+
+Console.WriteLine(string.Join(", ", adults.Select(n => n.Name + " " + n.Age)));
+
+Console.WriteLine(string.Join(", ", adults.Where(adults)));
+
+
+//Console.WriteLine(String.Join(',', people.Where(noX)));
+
+
+
+//List<Persons> peoples = new() {
+//    new Persons() { Name = "John", Age = 25 }
+//};
+
+//public class Persons
+//{
+//    public string Name { get; set; }
+//    public int Age { get; set; }
+
+//}
+
+
+
+
+
+/*
 Func<string, bool> fourCharsOrMore = w => w.Length >= 4;
 
 double avgLength = words.Average(w => w.Length);
@@ -121,14 +177,22 @@ switch (choice)
     default:
         Console.WriteLine("Invalid choice. Please enter 1, 2, or 3.");
         break;
-}*/
+}
 
+<<<<<<< HEAD
 /*
+=======
+
+>>>>>>> c733539eca0b63a01a4e64880685bf9ad0dfc52b
 void Greet()
 {
     Console.WriteLine("I am Action.");
 }
 Greet();
+<<<<<<< HEAD
+=======
+
+>>>>>>> c733539eca0b63a01a4e64880685bf9ad0dfc52b
 void Greet1(int a, bool b, string s)
 {
     Console.WriteLine($"{a} + {b} + {s}");
@@ -174,6 +238,7 @@ Console.WriteLine(f5(10)); // 100
 // Func with 3 parameters (int, bool, string), returns int
 Func<int, bool, string, int> f6 = (i, b, s) => i * 555;
 Console.WriteLine(f6(3, true, "Tekleab")); // 2,775,000
+<<<<<<< HEAD
 
 
 int X2(int x)
@@ -202,3 +267,6 @@ Console.WriteLine(result);
 
 Func<int, Func<int, int>> myFunc = x => y => x + y;
 Console.WriteLine(myFunc(5)(3));
+=======
+*/
+>>>>>>> c733539eca0b63a01a4e64880685bf9ad0dfc52b

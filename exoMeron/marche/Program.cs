@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System;
-using System.Text.RegularExpressions;
 
 namespace marché
 {
@@ -105,11 +104,14 @@ namespace marché
                 }
             }
 
+            //products.ForEach(p =>
+            //Console.WriteLine($"Location: {p.Location}, Name: {p.Name}, Price: {p.Price}"));
+
             Console.WriteLine($"Il y a {peaches} vendeurs de pêches");
 
             Console.WriteLine("");
 
-            Product maxProduct = null;
+            Product p = null;
             int biggestQuantity = 0;
 
             foreach (Product item in products)
@@ -119,14 +121,14 @@ namespace marché
                     if (item.Quantity > biggestQuantity)
                     {
                         biggestQuantity = item.Quantity;
-                        maxProduct = item;
+                        p = item;
                     }
                 }
             }
 
-            if (maxProduct != null)
+            if (p != null)
             {
-                Console.WriteLine($"C'est {maxProduct.Provider} qui a le plus de pastèques (stand {maxProduct.Location}, {maxProduct.Quantity} pièces)");
+                Console.WriteLine($"C'est {p.Provider} qui a le plus de pastèques (stand {p.Location}, {p.Quantity} pièces)");
             }
 
             Console.WriteLine("");

@@ -37,6 +37,7 @@ Func<string, bool> sameasAverage = w => w.Length == avgLength;
 //    Console.WriteLine("All 3 filters: " + item); //Print each item in a new line
 //}
 
+//IEnumerable<string> query = words.Where(noX).Where(fourCharsOrMore).Where(sameasAverage);
 //IEnumerable<string> query = from w in words
 //                            where !w.Contains("x")
 //                            where w.Length >= 4
@@ -48,43 +49,43 @@ Func<string, bool> sameasAverage = w => w.Length == avgLength;
 //--------------------------------------------------------------------------
 
 // Store filters in a list
-var filters = new List<Func<string, bool>> { noX, fourCharsOrMore, sameasAverage };
+//var filters = new List<Func<string, bool>> { noX, fourCharsOrMore, sameasAverage };
 
-// Display menu
-Console.WriteLine("The average length is: " + avgLength); //Print average length of words
-Console.WriteLine($"Array of strings : {string.Join(", ", words)}");
-Console.WriteLine("1. noX ");
-Console.WriteLine("2. fourCharsOrMore ");
-Console.WriteLine("3. sameasAverage ");
-Console.Write("\nChoice: ");
+//// Display menu
+//Console.WriteLine("The average length is: " + avgLength); //Print average length of words
+//Console.WriteLine($"Array of strings : {string.Join(", ", words)}");
+//Console.WriteLine("1. noX ");
+//Console.WriteLine("2. fourCharsOrMore ");
+//Console.WriteLine("3. sameasAverage ");
+//Console.Write("\nChoice: ");
 
-// Read filter choice
-if (!int.TryParse(Console.ReadLine(), out int choice) || choice < 1 || choice > filters.Count)
-{
-    Console.WriteLine("Choice invalid.");
-    return;
-}
+//// Read filter choice
+//if (!int.TryParse(Console.ReadLine(), out int choice) || choice < 1 || choice > filters.Count)
+//{
+//    Console.WriteLine("Choice invalid.");
+//    return;
+//}
 
-var selectedFilter = filters[choice - 1];
+//var selectedFilter = filters[choice - 1];
 
-// Ask for display order
-Console.WriteLine("Choose display order: 1 = A-Z, 2 = Z-A, 3 = Reverse the array");
-string orderChoice = Console.ReadLine();
+//// Ask for display order
+//Console.WriteLine("Choose display order: 1 = A-Z, 2 = Z-A, 3 = Reverse the array");
+//string orderChoice = Console.ReadLine();
 
-// Apply filter first
-IEnumerable<string> result = words.Where(selectedFilter);
+//// Apply filter first
+//IEnumerable<string> result = words.Where(selectedFilter);
 
-// Apply ordering
-result = orderChoice switch
-{
-    "1" => result.OrderBy(w => w),
-    "2" => result.OrderByDescending(w => w),
-    "3" => result.Reverse(),
-    _ => result
-};
+//// Apply ordering
+//result = orderChoice switch
+//{
+//    "1" => result.OrderBy(w => w),
+//    "2" => result.OrderByDescending(w => w),
+//    "3" => result.Reverse(),
+//    _ => result
+//};
 
-// Print result
-Console.WriteLine($"Résultat: {string.Join(", ", result)}");
+//// Print result
+//Console.WriteLine($"Résultat: {string.Join(", ", result)}");
 
 
 //---------------------------Action and Func------------------------------------------------
@@ -205,18 +206,23 @@ Console.WriteLine(myFunc(5)(3));
 
 //--------------------------------------------------------------------------
 
-//List<Coloc> coloc = new() {
-//    new Coloc() { Name = "William", Age = 30 }
-//};
+List<Coloc> coloc = new() {
+    new Coloc() { Name = "William", Age = 30 },
+    new Coloc() { Name = "Emma", Age = 25 },
+    new Coloc() { Name = "Olivia", Age = 28 },
+    new Coloc() { Name = "Ava", Age = 22 }
+};
 
-//coloc.ForEach(n => Console.WriteLine($"{n.Name} {n.Age}"));
-//Console.WriteLine(string.Join(", ", coloc.Select(n => n.Name + " " + n.Age)));
+List<Coloc> adults = coloc.Where(p => p.Age >=28 ).ToList();
 
-////Class without constructor
-//class Coloc
-//{
-//    public string Name { get; set; }
-//    public int Age { get; set; }
-//}
+adults.ForEach(n => Console.WriteLine($"{n.Name} {n.Age}"));
+Console.WriteLine(string.Join(", ", adults.Select(n => n.Name + " " + n.Age)));
+
+//Class without constructor
+class Coloc
+{
+    public string Name { get; set; }
+    public int Age { get; set; }
+}
 
 //--------------------------------------------------------------------------

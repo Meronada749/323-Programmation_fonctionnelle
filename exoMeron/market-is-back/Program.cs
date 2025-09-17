@@ -161,18 +161,75 @@ var productsByProvider = products.GroupBy(p => p.Provider);
 //    Console.WriteLine(price);
 //}
 
-Dictionary<string, Product> dico = new()
-{
-    { "Pommes", new Product { Name = "Pommes", Quantity = 20, Price = 6.9m } },
-    { "Poires", new Product { Name = "Poires", Quantity = 16, Price = 3.5m } },
-    { "Pastèques", new Product { Name = "Pastèques", Quantity = 14, Price = 6.0m } },
-    { "Melons", new Product { Name = "Melons", Quantity = 5, Price = 7.0m } }
+//Dictionary<string, Product> dico = new()
+//{
+//    { "Pommes", new Product { Name = "Pommes", Quantity = 20, Price = 6.9m } },
+//    { "Poires", new Product { Name = "Poires", Quantity = 16, Price = 3.5m } },
+//    { "Pastèques", new Product { Name = "Pastèques", Quantity = 14, Price = 6.0m } },
+//    { "Melons", new Product { Name = "Melons", Quantity = 5, Price = 7.0m } }
+//};
+
+////Dictionary
+//Product toto = dico["Pommes"];
+//Console.WriteLine(toto.Price);
+
+////List
+//Product tota = products.Where(p => p.Quantity == 5).First();
+//Console.WriteLine(tota.Name);
+
+//In IEnumerable u gotta add .ToList() to use .ForEach
+IEnumerable<int> numbers = Enumerable.Range(0, 5);
+Console.WriteLine(string.Join(", ", numbers));
+//numbers.ToList().ForEach(Console.WriteLine);
+//foreach (int n in numbers)
+//{
+//    Console.WriteLine(n);
+//}
+
+IEnumerable<int> num = numbers.Select(_ => 1);
+//List<int> num = numbers.Select(_ => 1).ToList();
+Console.WriteLine(string.Join(", ", num));
+//num.ForEach(Console.WriteLine);
+//foreach (int n in num)
+//{
+//    Console.WriteLine(n);
+//}
+
+List<object> objects = numbers.Select(_ => new object()).ToList();
+Console.WriteLine(string.Join(", ", objects));
+
+List<string> s = numbers.Select(x => new string('a', x)).ToList();
+Console.WriteLine(string.Join(", ", s));
+
+List<int> result = string.Join(',', numbers).Select(x => Convert.ToInt32(x) + 1).ToList();
+Console.WriteLine(string.Join(',', result));
+
+//IEnumerable<IEnumerable<int>> r = "".Select(_ => Enumerable.Range(0, 5000));
+//var ro = "".Select(_ => Enumerable.Range(0, 5000));
+//Console.WriteLine(string.Join(',', ro));
+
+List<Person> persons = new() {
+    new() {Name="Bob",Age=15 },
+    new() {Name="Anna",Age=16 },
+    new() {Name="Chan",Age=17 }
 };
 
-//Dictionary
-Product toto = dico["Pommes"];
-Console.WriteLine(toto.Price);
+persons.Select(x => x.Name.Substring(0, Math.Min(x.Name.Length, 2)));//Bo,An,Ch
 
-//List
-Product tota = products.Where(p => p.Quantity == 5).First();
-Console.WriteLine(tota.Name);
+IEnumerable<string> shortNames = persons.Select(x => x.Name.Substring(0, Math.Min(x.Name.Length, 2)));
+Console.WriteLine(string.Join(", ", shortNames));
+
+List<string> shortNamesList = persons.Select(x => x.Name.Substring(0, Math.Min(x.Name.Length, 2))).ToList();
+//shortNamesList.ForEach(Console.WriteLine);
+Console.WriteLine(string.Join(", ", shortNamesList));
+
+//string.Substring(startIndex, length)
+//"Bob".Substring(0, 2) // "Bo"
+//Math.Min(a, b) → returns the smaller of a and b
+
+class Person
+{
+    public string Name { get; set; }
+    public int Age { get; set; }
+}
+

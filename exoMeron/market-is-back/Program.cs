@@ -214,6 +214,10 @@ List<Person> persons = new() {
     new() {Name="Chan",Age=17 }
 };
 
+//List<int> ages = persons.Select(x => new { age = x.age}).ToList();
+
+List<int> age = persons.Select(c => c.Age).ToList();
+
 persons.Select(x => x.Name.Substring(0, Math.Min(x.Name.Length, 2)));//Bo,An,Ch
 
 IEnumerable<string> shortNames = persons.Select(x => x.Name.Substring(0, Math.Min(x.Name.Length, 2)));
